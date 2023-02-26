@@ -5,3 +5,11 @@
 .high-price{
     color: red;
 }
+
+.book-details {
+    background-color: lightblue;
+    text-align: center;
+    max-width: 600px;
+    position: relative;
+    left: calc(50% - 300px);
+}

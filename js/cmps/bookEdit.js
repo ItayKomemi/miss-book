@@ -18,7 +18,7 @@ export default {
     },
     methods: {
         save() {
-            bookService.save(this.car)
+            bookService.save(this.book)
                 .then(savedBook => {
                     this.book = bookService.getEmptyBook()
                     this.$emit('book-saved', savedBook)

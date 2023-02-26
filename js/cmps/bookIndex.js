@@ -12,7 +12,7 @@ export default {
             <bookFilter @filter="setFilterBy"/>
             <bookList 
                 :books="filteredBooks" 
-                v-if="books"
+                v-if="books && !selectedBook"
                 @remove="removeBook" 
                 @show-details="showBookDetails" />
                 <bookEdit @book-saved="onSaveBook"/>
@@ -26,7 +26,7 @@ export default {
         return {
             books: null,
             selectedBook: null,
-            filterBy: {},
+            filterBy: {maxPrice: 200},
         }
     },
     methods: {
@@ -50,7 +50,8 @@ export default {
     computed: {
         filteredBooks() {
             const regex = new RegExp(this.filterBy.title, 'i')
-            return this.books.filter(book => regex.test(book.title))
+            return this.books.filter(book => regex.test(book.title) &&
+             this.filterBy.maxPrice > book.listPrice.amount)
         }
     },
     created() {

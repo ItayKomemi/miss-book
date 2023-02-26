@@ -1,5 +1,8 @@
+
 /* COMPONENTS */
 
 @import 'cmps/appHeader.css';
 @import 'cmps/appFooter.css';
 @import 'cmps/book-details.css';
+@import 'cmps/books-layout.css';
+@import 'cmps/book-card.css';

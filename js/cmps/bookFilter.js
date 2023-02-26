@@ -6,11 +6,14 @@ export default {
                 @input="filter" 
                 placeholder="Search"
                 type="text" />
+                <br>
+            <label>Max Price:</label> <input v-model="filterBy.maxPrice" 
+            @input="filter" type="range" min="0" max="200"/>
         </section>
     `,
     data() {
         return {
-            filterBy: { title: '', maxPrice: 0 },
+            filterBy: { title: '', maxPrice: 200 },
         }
     },
     methods: {

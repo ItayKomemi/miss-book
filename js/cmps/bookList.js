@@ -4,7 +4,7 @@ export default {
     props:['books'],
     template: `
         <section class="book-list">
-            <ul>
+            <ul class="book-card">
                 <li v-for="book in books" :key="book.id">
                     <bookPreview :book="book"/>
                     <button @click="showDetails(book.id)">Details</button>
