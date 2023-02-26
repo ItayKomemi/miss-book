@@ -1,0 +1,12 @@
+.app-footer {
+    display: flex;
+    align-items: center;
+    
+    height: 5vh;
+    
+    padding: 10px;
+    background-color: bisque;;
+}
+.app-footer p {
+    margin: 0;
+}
