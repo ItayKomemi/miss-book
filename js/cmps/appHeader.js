@@ -3,9 +3,9 @@ export default {
         <header class="app-header">
             <h1>Miss-Book</h1>
             <nav>
-                <a @click="setRoute('HomePage')" href="#">Home</a>
-                <a @click="setRoute('CarIndex')" href="#">Books</a>
-                <a @click="setRoute('AboutPage')" href="#">About</a>
+                <a @click="setRoute('homePage')" href="#">Home</a>
+                <a @click="setRoute('bookIndex')" href="#">Books</a>
+                <a @click="setRoute('aboutPage')" href="#">About</a>
             </nav>
         </header>
     `,
