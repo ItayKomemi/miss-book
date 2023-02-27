@@ -1,6 +1,0 @@
-.book-card{
-    display: grid;
-    grid-template-columns: repeat(3,minmax(100px,400px));
-    gap: 10px;
-}
-

@@ -1,8 +1,13 @@
+/* BASE */
+
+@import 'base/base.css';
+@import 'base/layout.css';
 
 /* COMPONENTS */
 
+@import 'cmps/userMsg.css';
+@import 'cmps/buttons.css';
 @import 'cmps/appHeader.css';
 @import 'cmps/appFooter.css';
 @import 'cmps/book-details.css';
-@import 'cmps/books-layout.css';
 @import 'cmps/book-card.css';

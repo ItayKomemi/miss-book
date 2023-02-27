@@ -1,0 +1,20 @@
+.search-container{
+    display: flex;
+    gap: 20px;
+}
+
+.book-card{
+    display: grid;
+    grid-template-columns: repeat(3,minmax(100px,400px));
+    gap: 10px;
+    justify-items: start;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+}
+
+.container > * {
+    grid-column: 2;
+}

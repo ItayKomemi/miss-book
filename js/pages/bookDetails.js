@@ -1,12 +1,12 @@
-import longText from './longText.js'
+import longText from "../cmps/longText.js"
+import { bookService } from "../service/bookService.js"
 
 export default {
-  props: ["book"],
   template: `
-        <section class="book-details">
-            <h1 v-if="book.listPrice.isOnSale">On Sale</h1>
+        <section class="book-details" v-if="book">
+            <h1 v-if="book.listPrice.isOnSale">On Sale 🥳🤩</h1>
             <h2>{{ book.title }}</h2>
-            <p>Author: {{book.authors[0]}}</p>
+            <p>Author: {{authors}}</p>
 
             <p>published at: {{book.publishedDate}}
                <span>{{checkPublishedDate}}</span> 
@@ -21,13 +21,19 @@ export default {
             <span>Price: <span :class="counterClass">{{ book.listPrice.amount }}</span></span> <span>{{ book.listPrice.currencyCode }}</span>
             <br>
             <img :src="book.thumbnail" alt=""/>
-            <button @click="closeDetails">Close</button>
+            <br>
+            <RouterLink class="back-button" to="/books">Back to list</RouterLink>
         </section>
     `,
   data() {
     return {
-      sentence: '',
+      sentence: "",
+      book: null,
     }
+  },
+  created() {
+    const { bookId } = this.$route.params
+    bookService.get(bookId).then((book) => (this.book = book))
   },
   methods: {
     closeDetails() {
@@ -42,10 +48,10 @@ export default {
       else if (currYear - this.book.publishedDate <= 1) return "New"
     },
     getPageCount() {
-        const pageCount = this.book.pageCount
-        if(pageCount > 500) return 'Serious Reading'
-        else if (pageCount > 200) return 'Descent Reading'
-        else if (pageCount < 100) return 'Light Reading' 
+      const pageCount = this.book.pageCount
+      if (pageCount > 500) return "Serious Reading"
+      else if (pageCount > 200) return "Descent Reading"
+      else if (pageCount < 100) return "Light Reading"
     },
     counterClass() {
       return {
@@ -53,8 +59,11 @@ export default {
         "low-price": this.book.listPrice.amount < 20,
       }
     },
+    authors() {
+      return this.book.authors.join(', ')
+    }
   },
   components: {
     longText,
-  }
+  },
 }

@@ -4,6 +4,7 @@
     text-align: center;
     padding: 10px;
     background-color: bisque;;
+    grid-column: 1/-1;
 }
 .app-footer p {
     margin: 0;

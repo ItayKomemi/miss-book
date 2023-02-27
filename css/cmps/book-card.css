@@ -1,13 +1,15 @@
 .book-preview{
-    width: 300px;
-    height: 450px;
     background-color: antiquewhite;
     text-align: center;
 }
 
+.book-card img {
+    width: 80%;
+    margin-bottom: 1em;
+}
+
 .book-card button {
-    margin-left: 70px;
-    cursor: pointer;
+    border-radius: 20%;
 }
 
 li {
@@ -37,4 +39,8 @@ a{
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.back-button {
+    font-size: 2em;
 }
