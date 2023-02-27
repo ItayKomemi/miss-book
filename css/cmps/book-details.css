@@ -7,9 +7,18 @@
 }
 
 .book-details {
+    padding: 1em;
     background-color: lightblue;
     text-align: center;
     max-width: 600px;
     position: relative;
     left: calc(50% - 300px);
+}
+
+.book-details span {
+    font-weight: bold;
+}
+
+.back-button {
+    font-size: 1.5em;
 }

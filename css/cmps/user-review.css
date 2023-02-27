@@ -1,0 +1,18 @@
+.review{
+  cursor: pointer;
+  background-color: bisque;
+  width: max-content;
+}
+
+.add-review{
+  position: relative;
+  left: calc(50% - 60px);
+}
+
+.review-list{
+  background-color: lightcyan;
+}
+
+.review-list button {
+  float: right;
+}

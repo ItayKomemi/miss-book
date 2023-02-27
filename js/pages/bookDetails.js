@@ -1,28 +1,37 @@
 import longText from "../cmps/longText.js"
 import { bookService } from "../service/bookService.js"
+import addReview from '../cmps/addReview.js'
+import reviewList from "../cmps/reviewList.js"
+
 
 export default {
   template: `
-        <section class="book-details" v-if="book">
+          
+          <section class="book-details" v-if="book">
             <h1 v-if="book.listPrice.isOnSale">On Sale 🥳🤩</h1>
-            <h2>{{ book.title }}</h2>
-            <p>Author: {{authors}}</p>
+            <h2><span>Title: </span> {{ book.title }}</h2>
+            <p><span>Author: </span> {{authors}}</p>
+            
 
-            <p>published at: {{book.publishedDate}}
-               <span>{{checkPublishedDate}}</span> 
-            </p>
-
-            <longText :txt="book.description"/>
-
-            <p>Page count: {{book.pageCount}}
-                <span>{{getPageCount}}</span>
+            <p><span>published at: </span> {{book.publishedDate}}
+              <span>{{checkPublishedDate}}</span> 
             </p>
             
-            <span>Price: <span :class="counterClass">{{ book.listPrice.amount }}</span></span> <span>{{ book.listPrice.currencyCode }}</span>
+           <span>Description: </span> <longText :txt="book.description"/>
+
+            <p><span>Page</span> count: {{book.pageCount}}
+              <span>{{getPageCount}}</span>
+            </p>
+            
+            <span>Price:</span> <span :class="counterClass">{{ book.listPrice.amount }}</span> <span>{{ book.listPrice.currencyCode }}</span>
             <br>
             <img :src="book.thumbnail" alt=""/>
             <br>
-            <RouterLink class="back-button" to="/books">Back to list</RouterLink>
+            <RouterLink to="/books"><span class="back-button">Back to list</span></RouterLink>
+            
+            <addReview :bookId="book.id"/>
+            <h2>Reviews:</h2>
+            <reviewList :book="book"/>
         </section>
     `,
   data() {
@@ -39,6 +48,7 @@ export default {
     closeDetails() {
       this.$emit("hide-details")
     },
+
   },
   computed: {
     checkPublishedDate() {
@@ -65,5 +75,7 @@ export default {
   },
   components: {
     longText,
+    addReview,
+    reviewList,
   },
 }

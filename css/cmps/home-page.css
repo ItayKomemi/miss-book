@@ -1,0 +1,6 @@
+body{
+    background-image: url('../../imges/home-backgound.jpg');
+    /* background-repeat: no-repeat; */
+    max-width: 100%;
+    height: auto;
+}

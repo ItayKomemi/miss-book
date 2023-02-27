@@ -18,3 +18,8 @@
 .container > * {
     grid-column: 2;
 }
+
+.review-layout{
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+}

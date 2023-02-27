@@ -6,6 +6,7 @@ import booksDB from "../service/books.json" assert { type: "json" }
 
 const BOOK_KEY = 'bookDB'
 
+_createBooks()
 
 export const bookService = {
     query,
@@ -13,14 +14,18 @@ export const bookService = {
     remove,
     save,
     getEmptyBook,
+    addReview,
 }
 
-saveData()
 
-function saveData() {
-   utilService.saveToStorage(BOOK_KEY,booksDB)
-}
-
+function _createBooks() {
+    let books = utilService.loadFromStorage(BOOK_KEY)
+    if (!books || !books.length) {
+      books = booksDB
+      utilService.saveToStorage(BOOK_KEY, books)
+    }
+  }
+  
 
 function query(filterBy = {}) {
     return storageService.query(BOOK_KEY)
@@ -54,4 +59,14 @@ function save(book) {
 
 function getEmptyBook(title = '', maxPrice = 0) {
     return { id: '', title, maxPrice }
+}
+
+function addReview(bookId,review) {
+
+    get(bookId)
+    .then(book =>{
+        if(!book.reviews) book.reviews = []
+        book.reviews.push(review)
+        save(book)
+    })
 }

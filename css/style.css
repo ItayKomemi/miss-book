@@ -5,6 +5,8 @@
 
 /* COMPONENTS */
 
+@import 'cmps/home-page.css';
+@import 'cmps/user-review.css';
 @import 'cmps/userMsg.css';
 @import 'cmps/buttons.css';
 @import 'cmps/appHeader.css';
