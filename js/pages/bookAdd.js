@@ -31,11 +31,11 @@ export default {
   methods: {
     searchBook() {
        this.books = googleService.query(this.val)
-        this.val = ''
+       this.val = ''
     },
     saveBook(book) {
-        console.log(book);
-        bookService.addGoogleBook(book)
+       const newBook = googleService.updateBook(book)
+        bookService.addGoogleBook(newBook)
     }
   },
 }

@@ -14,7 +14,7 @@ export default {
             
             <h1 v-if="book.listPrice.isOnSale">On Sale 🥳🤩</h1>
             <h2><span>Title: </span> {{ book.title }}</h2>
-            <p><span>Author: </span> {{authors}}</p>
+            <p v-if="book.authors"><span>Author: </span> {{authors}}</p>
             
 
             <p><span>published at: </span> {{book.publishedDate}}
@@ -26,7 +26,7 @@ export default {
             <p><span>Page</span> count: {{book.pageCount}}
               <span>{{getPageCount}}</span>
             </p>
-            
+          
             <span>Price:</span> <span :class="counterClass">{{ book.listPrice.amount }}</span> <span>{{ book.listPrice.currencyCode }}</span>
             <br>
             <img :src="book.thumbnail" alt=""/>
@@ -81,7 +81,7 @@ export default {
       }
     },
     authors() {
-      return this.book.authors.join(", ")
+      if(this.book.authors) return this.book.authors.join(", ")
     },
   },
   watch: {
