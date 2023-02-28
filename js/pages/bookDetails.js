@@ -1,13 +1,17 @@
 import longText from "../cmps/longText.js"
 import { bookService } from "../service/bookService.js"
-import addReview from '../cmps/addReview.js'
+import addReview from "../cmps/addReview.js"
 import reviewList from "../cmps/reviewList.js"
-
 
 export default {
   template: `
           
           <section class="book-details" v-if="book">
+            <nav>
+              <RouterLink :to="'/books/' + book.prevBookId"><span class="go-through-book">Previous Book</span></RouterLink>|
+              <RouterLink :to="'/books/' + book.nextBookId"><span class="go-through-book">Next Book</span></RouterLink>
+            </nav>
+            
             <h1 v-if="book.listPrice.isOnSale">On Sale 🥳🤩</h1>
             <h2><span>Title: </span> {{ book.title }}</h2>
             <p><span>Author: </span> {{authors}}</p>
@@ -41,14 +45,18 @@ export default {
     }
   },
   created() {
+    this.loadBook()
     const { bookId } = this.$route.params
     bookService.get(bookId).then((book) => (this.book = book))
   },
   methods: {
+    loadBook() {
+      bookService.get(this.bookId)
+          .then(book => this.book = book)
+  },
     closeDetails() {
       this.$emit("hide-details")
     },
-
   },
   computed: {
     checkPublishedDate() {
@@ -56,6 +64,9 @@ export default {
 
       if (currYear - this.book.publishedDate > 10) return "Vintage"
       else if (currYear - this.book.publishedDate <= 1) return "New"
+    },
+    bookId() {
+      return this.$route.params.bookId
     },
     getPageCount() {
       const pageCount = this.book.pageCount
@@ -70,7 +81,13 @@ export default {
       }
     },
     authors() {
-      return this.book.authors.join(', ')
+      return this.book.authors.join(", ")
+    },
+  },
+  watch: {
+    bookId() {
+        console.log('Book Id Changed!')
+        this.loadBook()
     }
   },
   components: {

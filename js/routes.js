@@ -1,8 +1,10 @@
 import homePage from './pages/homePage.js'
 import aboutPage from './pages/aboutPage.js'
+import bookAdd from "./pages/bookAdd.js"
 import bookIndex from './pages/bookIndex.js'
 import bookDetails from './pages/bookDetails.js'
 import bookEdit from './pages/bookEdit.js'
+
 
 const { createRouter, createWebHashHistory } = VueRouter
 const options = {
@@ -19,6 +21,10 @@ const options = {
     {
       path: '/books',
       component: bookIndex,
+    },
+    {
+      path: '/bookAdd',
+      component: bookAdd,
     },
     {
       path: '/books/:bookId',

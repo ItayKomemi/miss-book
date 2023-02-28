@@ -6,7 +6,7 @@ export default {
                 @input="filter" 
                 placeholder="Search a book"
                 type="text" />
-            <label>Max Price:</label> <input v-model="filterBy.maxPrice" 
+            <label>  Filter by max Price:</label> <input v-model="filterBy.maxPrice" 
             @input="filter" type="range" min="0" max="200"/>
         </section>
     `,

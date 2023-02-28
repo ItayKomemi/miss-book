@@ -1,0 +1,14 @@
+.bookAdd-btn {
+    margin-left: 1em;
+}
+
+.bookAdd-btn-ul {
+    border-radius: 50%;
+}
+
+.bookAdd-ul{
+    display: flex;
+    border: 2px solid lightgray;
+    width: max-content;
+    padding: 0;
+}

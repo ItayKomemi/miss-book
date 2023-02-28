@@ -22,3 +22,7 @@
 .back-button {
     font-size: 1.5em;
 }
+
+.go-through-book:hover {
+    color: lightcoral;
+}
